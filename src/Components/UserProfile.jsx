@@ -20,10 +20,8 @@ const UserProfile = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            setUserColumns(Object.keys(data.user_name))
-            setRecord(data.user_name)
-            setInfoColumns(Object.keys(data.info[0]))
-            setInfo(data.info)
+            setUserColumns(Object.keys(data.user))
+            setRecord(data.user)
             setAddressColumns(Object.keys(data.addresses[0]))
             setAddresses(data.addresses)
             setPhoneColumns(Object.keys(data.phones[0]))
@@ -58,36 +56,11 @@ const UserProfile = () => {
                         <td>{record.first_name}</td>
                         <td>{record.last_name}</td>
                         <td>{record.email}</td>
-                        <td class="hidetext">{record.pass_word}</td>
+                        <td className="hidetext">{record.pass_word}</td>
                         <td>{record.created_date}</td>
                         <td>{record.is_active}</td>
                         <td>{record.last_login}</td>
                     </tr>
-                }
-            </tbody>
-        </table>
-
-        <h2>User Info</h2>
-        <table className='table'>
-            <thead>
-                <tr>
-                    {
-                        infoColumns.map((c, i) => (<th key={i}>{c.replaceAll("_", " ").toUpperCase()}</th>))
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                {
-                    info.map((info,i) => (
-                    <tr>
-                        <td>{info.user_info_id}</td>
-                        <td>{info.profile_bio}</td>
-                        <td>{info.profile_picture}</td>
-                        <td>{info.modified_date}</td>
-                        <td>{info.created_date}</td>
-                        <td>{info.user}</td>
-                    </tr>
-                    ))
                 }
             </tbody>
         </table>
